@@ -1,0 +1,19 @@
+services:
+  news_mcp:
+    build:
+      context: ./news_mcp
+    ports:
+      - "9001:9001"
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+
+  social_mcp:
+    build:
+      context: ./social_mcp
+    ports:
+      - "9002:9002"
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - REDT_ID=${REDT_ID}
+      - REDT_PASS=${REDT_PASS}
